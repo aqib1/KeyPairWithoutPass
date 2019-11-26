@@ -12,10 +12,10 @@ function validateParams () {
 
 function create_keystore() {
     validateParams $*
-    site_name=kylin-$1.sensity.com
+    site_name=Temp-$1.example.com
     password="TEST1234"
     pass_phrase="TEST1234TEST"
-    ou="EPAM"
+    ou="TEMP"
     country="HU"
     state="Budapest"
     matchForRSAPrivateKeyHeader="BEGIN RSA PRIVATE KEY"
@@ -36,8 +36,7 @@ function create_keystore() {
                     --arg pub "${public_key}" \
                     '{private_key: $pk, public_key: $pub}'
     );
-    echo "keypair json created " ${keypair_json}
-    #aws secretsmanager create-secret --name ${site_name}.keypair --description "Keypair (public/private) for domain "${site_name} --secret-string ${keypair_json}
+    echo "keypair json created " ${keypair_json} 
 }
 
 create_keystore $*
